@@ -68,7 +68,7 @@ export const TasksProvider = ({ children }) => {
     try {
       const queryParams = new URLSearchParams(filters).toString();
       const res = await axios.get(
-        `http://localhost:5000/api/task?${queryParams}`
+        `${import.meta.env.VITE_API_URL}?${queryParams}`
       );
       dispatch({
         type: GET_TASKS,
@@ -91,7 +91,7 @@ export const TasksProvider = ({ children }) => {
     };
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/task/",
+        `${import.meta.env.VITE_API_URL}/api/task/`,
         taskData,
         config
       );
@@ -122,7 +122,7 @@ export const TasksProvider = ({ children }) => {
     };
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/task/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/task/${id}`,
         taskData,
         config
       );
@@ -147,7 +147,7 @@ export const TasksProvider = ({ children }) => {
   // Delete Task
   const deleteTask = async id => {
     try {
-      await axios.delete(`http://localhost:5000/api/task/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/task/${id}`);
       dispatch({
         type: DELETE_TASK,
         payload: id,
