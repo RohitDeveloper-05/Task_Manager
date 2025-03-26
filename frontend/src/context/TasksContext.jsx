@@ -68,7 +68,7 @@ export const TasksProvider = ({ children }) => {
     try {
       const queryParams = new URLSearchParams(filters).toString();
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}?${queryParams}`
+        `${import.meta.env.VITE_API_URL}/api/task/?${queryParams}`
       );
       dispatch({
         type: GET_TASKS,
