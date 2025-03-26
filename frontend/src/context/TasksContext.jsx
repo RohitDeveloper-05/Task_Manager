@@ -68,7 +68,7 @@ export const TasksProvider = ({ children }) => {
     try {
       const queryParams = new URLSearchParams(filters).toString();
       const res = await axios.get(
-        `https://task-manager-q0zj.onrender.com?${queryParams}`
+        `${import.meta.env.VITE_API_URL}?${queryParams}`
       );
       dispatch({
         type: GET_TASKS,
