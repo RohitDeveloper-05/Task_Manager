@@ -11,7 +11,13 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: "https://task-manager-1-lbw3.onrender.com", // your frontend domain
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "x-auth-token"],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Define Routes
