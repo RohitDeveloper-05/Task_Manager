@@ -22,9 +22,9 @@ import Navbar from "./components/Navbar";
 function App() {
   return (
     <div>
-      <AuthProvider>
-        <TasksProvider>
-          <Router>
+      <Router>
+        <AuthProvider>
+          <TasksProvider>
             <div className='min-h-screen bg-background'>
               <Navbar />
               <div className='container mx-auto px-4 py-8'>
@@ -75,9 +75,9 @@ function App() {
                 </Routes>
               </div>
             </div>
-          </Router>
-        </TasksProvider>
-      </AuthProvider>
+          </TasksProvider>
+        </AuthProvider>
+      </Router>
       <ToastContainer />
     </div>
   );
