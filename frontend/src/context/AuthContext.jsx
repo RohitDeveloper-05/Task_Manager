@@ -6,7 +6,7 @@ import AuthContext from "./AuthContObj";
 import { useNavigate } from "react-router-dom";
 
 // Initial state
-const navigate = useNavigate();
+
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
@@ -54,6 +54,7 @@ const authReducer = (state, action) => {
 // Provider Component
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
+  const navigate = useNavigate();
 
   // Load User
   const loadUser = async () => {
