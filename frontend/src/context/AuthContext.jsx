@@ -2,8 +2,11 @@
 import React, { createContext, useReducer, useContext, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import AuthContext from "./AuthContObj";
+import { useNavigate } from "react-router-dom";
 
 // Initial state
+const navigate = useNavigate();
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
@@ -47,9 +50,6 @@ const authReducer = (state, action) => {
       return state;
   }
 };
-
-// Context
-const AuthContext = createContext();
 
 // Provider Component
 export const AuthProvider = ({ children }) => {
@@ -101,11 +101,7 @@ export const AuthProvider = ({ children }) => {
         config
       );
       localStorage.setItem("token", res.data.token); // Assuming res.data.token
-      dispatch({
-        type: AUTH_SUCCESS,
-        payload: { token: res.data.token },
-      });
-      await loadUser();
+      navigate("/login");
 
       toast.success(`🥳🎉  Your Account has been succesfully created`, {
         duration: 3000,
@@ -194,6 +190,8 @@ export const AuthProvider = ({ children }) => {
     initializeAuth();
   }, []);
 
+  //Placed the AuthContext in separate file to resolve production issues.
+
   return (
     <AuthContext.Provider
       value={{
@@ -220,5 +218,3 @@ export const useAuth = () => {
   }
   return context;
 };
-
-export { AuthContext };

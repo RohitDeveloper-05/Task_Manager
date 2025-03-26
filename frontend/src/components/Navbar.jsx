@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"; // Updated for Heroicons v2
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+//Just Updated for Heroicons v2
 
 const Navbar = () => {
   const { isAuthenticated, logout, user } = useAuth();
