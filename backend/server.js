@@ -11,6 +11,7 @@ const app = express();
 connectDB();
 
 // Middleware
+//Sorting Deployment Issues
 const corsOptions = {
   origin: "https://task-manager-1-lbw3.onrender.com", // your frontend domain
   methods: ["GET", "POST", "PUT", "DELETE"],
